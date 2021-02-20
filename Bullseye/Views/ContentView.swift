@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var alertIsVisible = false
-    @State private var sliderValue = 50.0
+    @State private var sliderValue = Constants.General.initialSliderValue
     @State private var game = Game()
     
     var body: some View {
@@ -18,10 +18,19 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionsView(game: $game)
-                    .padding(.bottom, 100)
-                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                    .padding(.bottom, alertIsVisible ? 0 : 100)
+                if alertIsVisible {
+                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                } else {
+                    HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                }
             }
-            SliderView(sliderValue: $sliderValue)
+            if !alertIsVisible {
+                SliderView(sliderValue: $sliderValue)
+                    .transition(.scale)
+            }
         }
     }
 }
@@ -32,8 +41,8 @@ struct InstructionsView: View {
     var body: some View {
         VStack{
             InstructionText(text: "🎯🎯🎯\nPut the Bullseye as close as you can to")
-                .padding(.leading, 30.0)
-                .padding(.trailing, 30.0)
+                .padding(.leading, Constants.Text.instructionTextPadding)
+                .padding(.trailing, Constants.Text.instructionTextPadding)
             BigNumberText(text: String(game.target))
         }
     }
@@ -47,7 +56,8 @@ struct SliderView: View {
             SliderLabelText(text: "1")
             Slider(value: $sliderValue, in: 1.0...100.0)
             SliderLabelText(text: "100")
-        }.padding()
+        }
+        .padding()
     }
 }
 
@@ -58,33 +68,27 @@ struct HitMeButton: View {
     
     var body: some View {
         Button(action: {
-            alertIsVisible = true
+            withAnimation{
+                alertIsVisible = true
+            }
         }) {
             Text("Hit me".uppercased())
                 .bold()
                 .font(.title3)
         }
-            .padding(20.0)
+            .padding(Constants.General.hitmeButtonPadding)
             .background(
                 ZStack {
                     Color("ButtonColor")
-                    LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
+                    LinearGradient(gradient: Gradient(colors: [Color.white.opacity(Constants.General.hitmeButtonGradientOpacity), Color.clear]), startPoint: .top, endPoint: .bottom)
                 }
             )
             .foregroundColor(Color.white)
-            .cornerRadius(21.0)
+            .cornerRadius(Constants.General.hitmeButtonCornerRadius)
             .overlay(
-                RoundedRectangle(cornerRadius: 21.0)
-                    .strokeBorder(Color.white, lineWidth: 2.0)
+                RoundedRectangle(cornerRadius: Constants.RoundedRect.roundRectCornerRadius)
+                    .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
             )
-            .alert(isPresented: $alertIsVisible, content: {
-                let roundedValue = Int(sliderValue.rounded())
-                let points = game.points(sliderValue: roundedValue)
-                return Alert(title: Text("Hello there!"), message: Text("The sliders value is \(roundedValue).\n" + "You scored \(points) points this round."), dismissButton:
-                    .default(Text("Awesome!")){
-                        game.startNewRound(points: points)
-                })
-            })
     }
 }
 

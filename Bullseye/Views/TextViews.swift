@@ -13,9 +13,9 @@ struct InstructionText: View {
     var body: some View {
         Text(text.uppercased())
             .bold()
-            .kerning(2.0)
+            .kerning(Constants.Text.instructionTextKerning)
             .multilineTextAlignment(.center)
-            .lineSpacing(4.0)
+            .lineSpacing(Constants.Text.instructionTextLineSpacing)
             .font(.footnote)
             .foregroundColor(Color("TextColor"))
     }
@@ -26,7 +26,7 @@ struct BigNumberText: View {
     
     var body: some View {
         Text(text)
-            .kerning(-1.0)
+            .kerning(Constants.Text.bigNumberTextKerning)
             .font(.largeTitle)
             .fontWeight(.black)
             .foregroundColor(Color("TextColor"))
@@ -40,7 +40,7 @@ struct SliderLabelText: View {
         Text(text)
             .bold()
             .foregroundColor(Color("TextColor"))
-            .frame(width: 35.0)
+            .frame(width: Constants.Text.sliderLabelTextWidth)
     }
 }
 
@@ -49,10 +49,39 @@ struct LabelText: View {
     
     var body: some View {
         Text(text)
-            .kerning(1.5)
+            .kerning(Constants.Text.labelTextKerning)
             .bold()
             .font(.caption)
             .foregroundColor(Color("TextColor"))
+    }
+}
+
+struct BodyText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .multilineTextAlignment(.center)
+            .lineSpacing(Constants.Text.bodyTextLineSpacing)
+    }
+}
+
+struct ButtonText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .bold()
+            .font(.body)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(
+                Color.accentColor
+            )
+            .foregroundColor(.white)
+            .cornerRadius(Constants.Text.buttonTextCornerRadius)
     }
 }
 
@@ -63,6 +92,9 @@ struct TextViews_Previews: PreviewProvider {
             BigNumberText(text: "999")
             SliderLabelText(text: "1")
             LabelText(text: "Score")
+            BodyText(text: "You scored 200 Points\n🎉🎉🎉")
+            ButtonText(text: "Start New Round")
         }
+        .padding()
     }
 }

@@ -16,6 +16,8 @@
 		F4296B0925D9855D00C0A13B /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4296B0825D9855D00C0A13B /* TextViews.swift */; };
 		F4296B0D25D9999B00C0A13B /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4296B0C25D9999B00C0A13B /* RoundedViews.swift */; };
 		F4296B1125D99D3300C0A13B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4296B1025D99D3300C0A13B /* BackgroundView.swift */; };
+		F4C3C2D525E097700081EC2B /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3C2D425E097700081EC2B /* PointsView.swift */; };
+		F4C3C2D925E0CF1C0081EC2B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3C2D825E0CF1C0081EC2B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		F4296B0825D9855D00C0A13B /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		F4296B0C25D9999B00C0A13B /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		F4296B1025D99D3300C0A13B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		F4C3C2D425E097700081EC2B /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
+		F4C3C2D825E0CF1C0081EC2B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				F4296AF525D8CCD700C0A13B /* Game.swift */,
+				F4C3C2D825E0CF1C0081EC2B /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 				F4296B0825D9855D00C0A13B /* TextViews.swift */,
 				F4296B0C25D9999B00C0A13B /* RoundedViews.swift */,
 				F4296B1025D99D3300C0A13B /* BackgroundView.swift */,
+				F4C3C2D425E097700081EC2B /* PointsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,7 +245,9 @@
 				F4296B1125D99D3300C0A13B /* BackgroundView.swift in Sources */,
 				F4296AE325D8430A00C0A13B /* ContentView.swift in Sources */,
 				F4296B0925D9855D00C0A13B /* TextViews.swift in Sources */,
+				F4C3C2D925E0CF1C0081EC2B /* Constants.swift in Sources */,
 				F4296B0D25D9999B00C0A13B /* RoundedViews.swift in Sources */,
+				F4C3C2D525E097700081EC2B /* PointsView.swift in Sources */,
 				F4296AF625D8CCD700C0A13B /* Game.swift in Sources */,
 				F4296AE125D8430A00C0A13B /* BullseyeApp.swift in Sources */,
 			);

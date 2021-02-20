@@ -14,10 +14,10 @@ struct RoundedImageViewStroked: View {
         Image(systemName: systemName)
             .font(.title)
             .foregroundColor(Color("TextColor"))
-            .frame(width: 56.0, height: 56.0)
+            .frame(width: Constants.RoundedRect.roundRectViewLength, height: Constants.RoundedRect.roundRectViewLength)
             .overlay(
                 Circle()
-                    .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2.0)
+                    .strokeBorder(Color("ButtonStrokeColor"), lineWidth: Constants.General.strokeWidth)
             )
     }
 }
@@ -29,7 +29,7 @@ struct RoundedImageViewFilled: View {
         Image(systemName: systemName)
             .font(.title)
             .foregroundColor(Color("TextColor"))
-            .frame(width: 56.0, height: 56.0)
+            .frame(width: Constants.RoundedRect.roundRectViewLength, height: Constants.RoundedRect.roundRectViewLength)
             .foregroundColor(Color("ButtonFilledTextColor"))
             .background(
                 Circle()
@@ -44,19 +44,19 @@ struct RoundedRectTextView: View {
     var body: some View {
         Text(text)
             .bold()
-            .kerning(-0.2)
+            .kerning(Constants.RoundedRect.roundRectTextKerning)
             .font(.title2)
-            .frame(width: 68.0, height: 56.0)
+            .frame(width: Constants.RoundedRect.roundRectViewWidth, height: Constants.RoundedRect.roundRectViewHeight)
             .overlay(
-                RoundedRectangle(cornerRadius: 21.0)
-                    .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2.0)
+                RoundedRectangle(cornerRadius: Constants.RoundedRect.roundRectCornerRadius)
+                    .strokeBorder(Color("ButtonStrokeColor"), lineWidth: Constants.General.strokeWidth)
             )
     }
 }
 
 struct PreviewView: View {
     var body: some View {
-        VStack(spacing: 10){
+        VStack(spacing: Constants.RoundedRect.roundVStackSpacing){
             RoundedImageViewStroked(systemName: "arrow.counterclockwise")
             RoundedImageViewStroked(systemName: "list.dash")
             RoundedRectTextView(text: "99")

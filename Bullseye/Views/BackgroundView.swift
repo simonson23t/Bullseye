@@ -50,9 +50,11 @@ struct RingsView: View {
                 let size = CGFloat(ring * 100)
                 let opacity = colorScheme == .dark ? 0.1 : 0.3
                 Circle()
-                    .stroke(lineWidth: 20.0)
+                    .stroke(lineWidth: Constants.Background.ringsViewStrokeWidth)
                     .fill(
-                        RadialGradient(gradient: Gradient(colors: [Color("RingColor").opacity(0.8 * opacity), Color("RingColor").opacity(0)]), center: .center, startRadius: 100, endRadius: 300)
+                        RadialGradient(gradient: Gradient(colors: [Color("RingColor").opacity(Constants.Background.ringsViewGradientOpacity * opacity), Color("RingColor").opacity(0)]), center: .center,
+                                       startRadius: Constants.Background.ringsViewGradientStartRadius,
+                                       endRadius: Constants.Background.ringsViewGradientStopRadius)
                     )
                     .frame(width: size, height: size)
             }
@@ -65,7 +67,7 @@ struct NumberView: View {
     var text: String
     
     var body: some View {
-        VStack(spacing: 5) {
+        VStack(spacing: Constants.Background.numberViewSpacing) {
             LabelText(text: title.uppercased())
             RoundedRectTextView(text: text)
         }
